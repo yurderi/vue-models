@@ -38,12 +38,12 @@ Vue.component('v-test', {
 
 ### API Documentation
 
-| Method                                         | Description                                      |
-|------------------------------------------------|--------------------------------------------------|
-| public create ()                               | Creates an empty model containing default values |
-| public save (data: Array)                      | Creates/saves a model entity                     |
-| public get (id: Integer)                       | Gets a model by id                               |
-| public remove (model: Object)                  | Removes a model by object (identified by id)     |
-| public list (params: Object)                   | List all models with additional params           |
-| public filter (models: Object, search: String) | Filter a set of models by search phrase          |
-| private __normalizeRow (data: Object)          | Applies types to model fields                    |
+| Method                                                 | Description                                      |
+|--------------------------------------------------------|--------------------------------------------------|
+| public create () : Object                              | Creates an empty model containing default values |
+| public save (data: Array) : Promise<Object>            | Creates/saves a model entity                     |
+| public get (id: Integer) : Promise<Object>             | Gets a model by id                               |
+| public remove (model: Object) : Promise<Boolean>       | Removes a model by object (identified by id)     |
+| public list (params: Object) : Promise<Array>          | List all models with additional params           |
+| public filter (models: Object, search: String) : Array | Filter a set of models by search phrase          |
+| private __normalizeRow (data: Object) : Object         | Applies types to model fields                    |
