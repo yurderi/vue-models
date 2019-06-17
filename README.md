@@ -19,7 +19,7 @@ import VueModels from '@yurderi/vue-models'
 import axios from 'axios'
 
 Vue.use(VueModels, {
-    modelsDir: './models/',
+    models: require.context(__dirname + '/models/'),
     http: axios.create()
 })
 

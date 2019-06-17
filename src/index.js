@@ -31,9 +31,7 @@ class VueModels {
     createModel(definition) {
         let me = this
         let http = me.opts.http
-
-        return {
-            ...definition,
+        let methods = {
             create() {
                 let me = this
                 let data = {}
@@ -129,6 +127,8 @@ class VueModels {
                 return data
             }
         }
+
+        return _.extend(definition, methods)
     }
 }
 
