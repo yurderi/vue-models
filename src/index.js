@@ -49,6 +49,9 @@ class VueModels {
                         case 'boolean':
                             value = field.default !== undefined ? field.default : false
                             break
+                        case 'json':
+                            value = field.default !== undefined ? field.default : {}
+                            break
                     }
 
                     data[field.name] = value
@@ -64,7 +67,7 @@ class VueModels {
             get(id) {
                 let me = this
 
-                return http.post(me.proxy.detail, { id }).then(response => response.data).then(response => {
+                return http.get(me.proxy.detail, { params: { id } }).then(response => response.data).then(response => {
                     return me.__normalizeRow(response.data)
                 })
             },
@@ -78,7 +81,7 @@ class VueModels {
             list(params) {
                 let me = this
 
-                return http.post(me.proxy.list, params).then(response => response.data).then(response => {
+                return http.get(me.proxy.list, { params }).then(response => response.data).then(response => {
                     let rows = response.data
 
                     if (!rows || typeof rows.map !== 'function') {
@@ -96,7 +99,10 @@ class VueModels {
 
                 return models.filter(model => {
                     for (let i = 0, field; i < fields.length, field = fields[i]; i++) {
-                        if (model[field.name].indexOf(search) > -1) {
+                        if (field.type === 'json' && JSON.stringify(model[field.name]).indexOf(search) > -1) {
+                            return true
+                        }
+                        else if (model[field.name].indexOf(search) > -1) {
                             return true
                         }
                     }
@@ -119,6 +125,7 @@ class VueModels {
                             break
                         case 'boolean':
                             value = Boolean(parseInt(value))
+                            break
                     }
 
                     data[field.name] = value
