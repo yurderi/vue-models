@@ -6,6 +6,11 @@
 - axios
 - vue
 
+### Installation
+```
+yarn add @yurderi/vue-models
+```
+
 ### Basic usage
 
 ```js
