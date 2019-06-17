@@ -1,0 +1,16 @@
+{
+  "name": "@yurderi/vue-models",
+  "version": "1.0.0",
+  "description": "A better way to use entities in vue.js",
+  "main": "index.js",
+  "repository": "git@github.com:yurderi/vue-models.git",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "vue": "^2.6.10"
+  },
+  "author": "tm-rm <meier@rhinos-media.de>",
+  "scripts": {
+    "test": "node test/index"
+  }
+}
